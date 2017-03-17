@@ -1,0 +1,29 @@
+/* 
+    Created on : Mar 14, 2017, 10:13:28 AM
+    Author     : datdh
+*/
+body {
+    position: relative;
+    background-color: #e9ebee;
+}
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 70%;
+    margin: auto;
+}
+.news-content {
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-right-style: groove;
+    border-top-style: groove;
+    
+}
+.ibox-content {
+    background-color: white;
+}
+.nope {
+    margin-top: 50px;
+}
+.news-header {
+    margin: 30px;
+}
