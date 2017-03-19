@@ -13,15 +13,19 @@ import java.util.List;
  */
 public class Catalog {
     private String catalogName;
+    private String catalogId;
     private List<RssItem> items;
 
     public Catalog() {
     }
 
-    public Catalog(String catalogName, List<RssItem> items) {
+    public Catalog(String catalogName, String catalogId, List<RssItem> items) {
         this.catalogName = catalogName;
+        this.catalogId = catalogId;
         this.items = items;
     }
+
+    
 
     public List<RssItem> getItems() {
         return items;
@@ -37,6 +41,14 @@ public class Catalog {
 
     public void setCatalogName(String catalogName) {
         this.catalogName = catalogName;
+    }
+
+    public String getCatalogId() {
+        return catalogId;
+    }
+
+    public void setCatalogId(String catalogId) {
+        this.catalogId = catalogId;
     }
     
 }

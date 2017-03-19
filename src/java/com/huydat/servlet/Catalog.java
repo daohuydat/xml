@@ -5,15 +5,13 @@
  */
 package com.huydat.servlet;
 
-import com.huydat.entities.Catalog;
-import com.huydat.entities.ExrateList;
 import com.huydat.entities.Rss;
 import com.huydat.entities.RssItem;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +27,7 @@ import javax.xml.bind.Unmarshaller;
  *
  * @author datdh
  */
-public class Index extends HttpServlet {
+public class Catalog extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,46 +40,25 @@ public class Index extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Catalog> catalogs = getCatalogs();
-        request.setAttribute("catalogs", catalogs);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
-    }
-
-    private List<Catalog> getCatalogs() {
-        List<Catalog> catalogs = new ArrayList<>();
-        try {
-            List<RssItem> items = null;
-            Rss rss = null;
-            
-            rss = getRss(getServletContext().getInitParameter("bongda-url"));
-            items = rss.getChannel().getItems();
-            catalogs.add(new Catalog("Bóng đá","bongda", items));
-            
-            rss = getRss(getServletContext().getInitParameter("anninhhinhsu-url"));
-            items = rss.getChannel().getItems();
-            catalogs.add(new Catalog("An ninh hình sự","anninhhinhsu", items));
-            
-            rss = getRss(getServletContext().getInitParameter("thoitranghitech-url"));
-            items = rss.getChannel().getItems();
-            catalogs.add(new Catalog("Thời trang high tech","thoitranghitech", items));
-            
-            rss = getRss(getServletContext().getInitParameter("otoxemay-url"));
-            items = rss.getChannel().getItems();
-            catalogs.add(new Catalog("Ô tô - xe máy","otoxemay", items));
-            
-            rss = getRss(getServletContext().getInitParameter("amthuc-url"));
-            items = rss.getChannel().getItems();
-            catalogs.add(new Catalog("Ẩm thực", "amthuc",items));
-            
-            rss = getRss(getServletContext().getInitParameter("lamdep-url"));
-            items = rss.getChannel().getItems();
-            catalogs.add(new Catalog("Làm đẹp", "lamdep",items));
-        } catch (JAXBException ex) {
-            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        String catalog = request.getParameter("c");
+        if (catalog == null) {
+            response.sendRedirect("Index");
+        } else {
+            String url = getServletContext().getInitParameter(catalog + "-url");
+            if (url == null) {
+                response.sendRedirect("Index");
+            } else {
+                List<RssItem> items = null;
+                try {
+                    Rss rss = getRss(url);
+                    items = rss.getChannel().getItems();
+                } catch (JAXBException | MalformedURLException ex) {
+                    Logger.getLogger(Catalog.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                request.setAttribute("items", items);
+                request.getRequestDispatcher("catalog.jsp").forward(request, response);
+            }
         }
-        return catalogs;
     }
 
     private Rss getRss(String url) throws JAXBException, MalformedURLException, IOException {
@@ -91,14 +68,6 @@ public class Index extends HttpServlet {
         Unmarshaller unmarshaller = context.createUnmarshaller();
         Rss rss = (Rss) unmarshaller.unmarshal(inputStream);
         return rss;
-    }
-    private ExrateList getExrate(String url) throws MalformedURLException, IOException, JAXBException{
-        URL u = new URL(url);
-        InputStream inputStream = u.openStream();
-        JAXBContext context = JAXBContext.newInstance(ExrateList.class);
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        ExrateList exrateList = (ExrateList) unmarshaller.unmarshal(inputStream);
-        return exrateList;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

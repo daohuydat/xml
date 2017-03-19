@@ -8,10 +8,6 @@
         </param-value>
     </context-param>
     <context-param>
-        <param-name>home-url</param-name>
-        <param-value>http://www.24h.com.vn/upload/rss/trangchu24h.rss</param-value>
-    </context-param>
-    <context-param>
         <param-name>bongda-url</param-name>
         <param-value>http://www.24h.com.vn/upload/rss/bongda.rss</param-value>
     </context-param>
@@ -22,6 +18,18 @@
     <context-param>
         <param-name>thoitranghitech-url</param-name>
         <param-value>http://www.24h.com.vn/upload/rss/thoitranghitech.rss</param-value>
+    </context-param>
+    <context-param>
+        <param-name>otoxemay-url</param-name>
+        <param-value>http://www.24h.com.vn/upload/rss/otoxemay.rss</param-value>
+    </context-param>
+    <context-param>
+        <param-name>amthuc-url</param-name>
+        <param-value>http://www.24h.com.vn/upload/rss/amthuc.rss</param-value>
+    </context-param>
+    <context-param>
+        <param-name>lamdep-url</param-name>
+        <param-value>http://www.24h.com.vn/upload/rss/lamdep.rss</param-value>
     </context-param>
     <context-param>
         <param-name>exrate-url</param-name>
@@ -43,6 +51,10 @@
         <servlet-name>ExchangeRate</servlet-name>
         <servlet-class>com.huydat.servlet.ExchangeRate</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Catalog</servlet-name>
+        <servlet-class>com.huydat.servlet.Catalog</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UploadFile</servlet-name>
         <url-pattern>/UploadFile</url-pattern>
@@ -58,6 +70,10 @@
     <servlet-mapping>
         <servlet-name>ExchangeRate</servlet-name>
         <url-pattern>/ExchangeRate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Catalog</servlet-name>
+        <url-pattern>/Catalog</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -47,7 +47,8 @@ public class ExchangeRate extends HttpServlet {
         }
         request.getRequestDispatcher("exrate.jsp").forward(request, response);
     }
-private ExrateList getExrate(String url) throws MalformedURLException, IOException, JAXBException{
+    
+    private ExrateList getExrate(String url) throws MalformedURLException, IOException, JAXBException{
         URL u = new URL(url);
         InputStream inputStream = u.openStream();
         JAXBContext context = JAXBContext.newInstance(ExrateList.class);

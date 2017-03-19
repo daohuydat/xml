@@ -15,19 +15,17 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/libs/css/bootstrap.min.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/libs/css/animate.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/libs/css/index.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/libs/css/index.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/libs/css/index.css">
 
         <script src="${pageContext.request.contextPath}/libs/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/libs/js/bootstrap.min.js"></script>
-        <style>
-            .nope {
-                margin-top: 50px;
-            }
-        </style>
+
     </head>
     <body>
         <!--Start nav bar-->
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
+        <nav class="navbar navbar-inverse navbar-fixed-top navbar-custom">
+            <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                         <span class="icon-bar"></span>
@@ -37,17 +35,15 @@
                     <a class="navbar-brand" href="Index">24h NEWS</a>
                 </div>
                 <div>
-                    <div class="collapse navbar-collapse" id="myNavbar">
+                    <div class="collapse navbar-right navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
-                            <li><a href="#section1">Section 1</a></li>
-                            <li><a href="#section2">Section 2</a></li>
-                            <li><a href="#section3">Section 3</a></li>
-                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#section41">Section 4-1</a></li>
-                                    <li><a href="#section42">Section 4-2</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="Catalog?c=bongda">Bóng đá</a></li>
+                            <li><a href="Catalog?c=anninhhinhsu">An ninh  hình sự</a></li>
+                            <li><a href="Catalog?c=thoitranghitech">Thời trang high-tech</a></li>
+                            <li><a href="Catalog?c=otoxemay">Ô tô - xe máy</a></li>
+                            <li><a href="Catalog?c=amthuc">Ẩm thực</a></li>
+                            <li><a href="Catalog?c=lamdep">Làm đẹp</a></li>
+                            <li><a href="ExchangeRate">Tỉ giá</a></li>
                         </ul>
                     </div>
                 </div>
@@ -56,36 +52,48 @@
         <!--End nav bar-->
         <div class="nope"></div>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-
-                </div>
-                <div class="col-lg-6">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Mã NT</th>
-                                <th>Tên ngoại tệ</th>
-                                <th>Mua tiền mặt</th>
-                                <th>Mua chuyển khoản</th>
-                                <th>Bán</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach var="ex" items="${exrate.exrates}">
-                            <tr>
-                                <td class="text-left">${ex.currencyCode}</td>
-                                <td class="text-left">${ex.currencyName}</td>
-                                <td class="text-right">${ex.buy}</td>
-                                <td class="text-right">${ex.transfer}</td>
-                                <td class="text-right">${ex.sell}</td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-                    <p>Tỉ giá được cập nhật lúc ${exrate.dateTime}</p>
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-lg-offset-2 col-lg-8">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Mã NT</th>
+                                    <th>Tên ngoại tệ</th>
+                                    <th class="text-right">Mua tiền mặt</th>
+                                    <th class="text-right">Mua chuyển khoản</th>
+                                    <th class="text-right">Bán</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="ex" items="${exrate.exrates}">
+                                    <tr>
+                                        <td class="text-left">${ex.currencyCode}</td>
+                                        <td class="text-left">${ex.currencyName}</td>
+                                        <td class="text-right">${ex.buy}</td>
+                                        <td class="text-right">${ex.transfer}</td>
+                                        <td class="text-right">${ex.sell}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                        <p>Tỉ giá được cập nhật lúc ${exrate.dateTime}</p>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="container text-center">
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>© 2017 XML Project.</li>
+                        <li>Made by Đào Huy Đạt</li>
+                        <li>Teacher Lương Trung Kiên</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
         </div>
     </body>
 </html>
