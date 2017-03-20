@@ -97,7 +97,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <img src="img/hightech.jpg" alt="Chania" width="800" height="400">
+                        <img src="img/high-tech.jpg" alt="Chania" width="800" height="400">
                         <div class="carousel-caption">
                             <h3>Thời trang high tech</h3>
                             <p>Nơi công nghệ lên ngôi.</p>
