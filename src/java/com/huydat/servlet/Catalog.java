@@ -9,7 +9,6 @@ import com.huydat.entities.Rss;
 import com.huydat.entities.RssItem;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;

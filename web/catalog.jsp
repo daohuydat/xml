@@ -36,7 +36,7 @@
                     <div class="collapse navbar-right navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
                             <li><a href="Catalog?c=bongda">Bóng đá</a></li>
-                            <li><a href="Catalog?c=anninhhinhsu">An ninh</a></li>
+                            <li><a href="Catalog?c=anninhhinhsu">An ninh hình sự</a></li>
                             <li><a href="Catalog?c=thoitranghitech">Thời trang high-tech</a></li>
                             <li><a href="Catalog?c=otoxemay">Ô tô - xe máy</a></li>
                             <li><a href="Catalog?c=amthuc">Ẩm thực</a></li>
